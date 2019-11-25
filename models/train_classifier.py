@@ -83,11 +83,6 @@ def load_data(database_filepath):
     for col in Y:
         print(col, Y[col].unique())
     
-    #print(Y.head())
-    # generate word features based on tokenize
-    X = X.apply(lambda x: tokenize(x))
-    #print(X.head())
-
     category_names = Y.columns
 
     return X, Y, category_names
@@ -106,11 +101,9 @@ def tokenize(text):
         words list: Processed text after normalizing, tokenizing and lemmatizing
     """
 
-    # Convert to lowercase
-    text = text.lower()
 
-    #Remove punctuation characters
-    text = re.sub(r"[^a-zA-Z0-9]", " ", text) 
+    # Normalize text
+    text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
 
     tokens = word_tokenize(text)
 
@@ -133,10 +126,10 @@ def build_model():
             ('text_pipeline', Pipeline([
                 ('vect', CountVectorizer(tokenizer=tokenize)),
                 ('tfidf', TfidfTransformer())
-            ]))
+            ])),
 
-           # ('starting_verb', StartingVerbExtractor()),
-            #('starting_noun', StartingNounExtractor())
+            ('starting_verb', StartingVerbExtractor()),
+            ('starting_noun', StartingNounExtractor())
         ])),
 
         ('clf', MultiOutputClassifier(RandomForestClassifier())) #LinearSVC()
