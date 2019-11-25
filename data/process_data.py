@@ -37,7 +37,7 @@ def clean_data(df):
     ## drop original categories
     df = df.drop(columns=['categories'])
     new_df = pd.concat([df, df_split] ,axis=1)
-    print(new_df.head())
+    #print(new_df.head())
     
 
     # Select duplicate rows except first occurrence based on all columns
@@ -62,8 +62,8 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
-    engine = create_engine('sqlite:///'+database_filename+'.db')
-    df.to_sql('messages_and_categories', engine, index=True)
+    engine = create_engine('sqlite:///'+database_filename)
+    df.to_sql('table_A', engine, index=True, if_exists='replace')
 
 
 
@@ -99,4 +99,6 @@ if __name__ == '__main__':
     # df = load_data(messages_filepath, categories_filepath)
     # df = clean_data(df)
     # save_data(df, 'database_filename')
+
+    #python process_data.py disaster_messages.csv disaster_categories.csv database_test.db
     main()

@@ -1,2 +1,5 @@
 .vscode/settings.json
 data/database_filename.db
+data/database_test.db
+models/model_pickle_linear.pkl
+models/RF_model_pickle.pkl
