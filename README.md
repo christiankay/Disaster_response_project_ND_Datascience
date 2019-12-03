@@ -27,8 +27,8 @@ Portfolio project to showcase Data Engineering skills including ETL and ML pipel
 
 Below are a few screenshots of the web app.
 
-<img src="images/disaster-response-project2.png" width="80%" alt="disaster response project web app">
-<img src="images/disaster-response-project1.png" width="80%" alt="disaster response project web app">
+<img src="images/disaster-response-project2.png" width="100%" alt="disaster response project web app">
+<img src="images/disaster-response-project1.png" width="100%" alt="disaster response project web app">
 
 
 ## Important Files:
